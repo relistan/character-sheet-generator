@@ -1,15 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:cc="http://creativecommons.org/ns#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:svg="http://www.w3.org/2000/svg"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="297mm"
-    height="210mm"
-    version="1.1">
-  <style type="text/css">
+   width="297mm"
+   height="210mm"
+   version="1.1"
+   id="svg128"
+   sodipodi:docname="Charactersheet-landscape-target20.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs128" />
+  <sodipodi:namedview
+     id="namedview128"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0710698"
+     inkscape:cx="354.78548"
+     inkscape:cy="504.16884"
+     inkscape:window-width="1640"
+     inkscape:window-height="951"
+     inkscape:window-x="0"
+     inkscape:window-y="38"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g128" />
+  <style
+     type="text/css"
+     id="style1">
       @media print {
         #link {
 	  display: none;
@@ -63,195 +91,793 @@
       .right { text-anchor: end; }
       .frame { fill: none; stroke-width: 1; stroke: black; }
   </style>
-  <metadata>
+  <metadata
+     id="metadata1">
     <rdf:RDF>
-      <cc:Work rdf:about="Character Sheet">
+      <cc:Work
+         rdf:about="Character Sheet">
         <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <dc:title />
-        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
       </cc:Work>
-      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
-        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction" />
-        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution" />
-        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
       </cc:License>
     </rdf:RDF>
   </metadata>
-  <g>
-    <text id="name-label" x="80" y="80" class="big"><tspan>Name</tspan></text>
-    <text id="name" x="160" y="80" class="large"><tspan>_________</tspan></text>
-    <text id="class-label" x="80" y="105" class="big"><tspan>Class</tspan></text>
-    <text id="class" x="160" y="105" class="large"><tspan>_________</tspan></text>
-    <text id="level-label" x="80" y="130" class="big"><tspan>Level</tspan></text>
-    <text id="level" x="160" y="130" class="large"><tspan>_________</tspan></text>
-    <text id="xp-label" x="80" y="155" class="big"><tspan>Exp.</tspan></text>
-    <text id="xp" x="160" y="155" class="large"><tspan>_________</tspan></text>
-    <text id="ac-label" x="80" y="180" class="large"><tspan>Armour</tspan></text>
-    <text id="ac" x="160" y="180" class="large"><tspan>_________</tspan></text>
-    <text id="ac-explanation" x="80" y="192" class="tiny">
-      <tspan x="80" y="192">Summary: none is 9, leather is 7,</tspan>
-      <tspan x="80" y="204">chain is 5, plate is 3, shield is -1,</tspan>
-      <tspan x="80" y="216">and subtract Dexterity Bonus</tspan>
-    </text>
-
-    <text id="ability-label" x="230" y="235" class="norm centred"><tspan>Value</tspan></text>
-    <text id="bonus-label" x="260" y="235" class="norm"><tspan>Bonus</tspan></text>
-    <text id="str-label" x="80" y="260" class="big"><tspan>Strength</tspan></text>
-    <text id="str" x="230" y="260" class="large centred"><tspan>___</tspan></text>
-    <text id="str-bonus" x="260" y="260" class="large"><tspan>___</tspan></text>
-    <text id="dex-label" x="80" y="290" class="big"><tspan>Dexterity</tspan></text>
-    <text id="dex" x="230" y="290" class="large centred"><tspan>___</tspan></text>
-    <text id="dex-bonus" x="260" y="290" class="large"><tspan>___</tspan></text>
-    <text id="con-label" x="80" y="320" class="big"><tspan>Constitution</tspan></text>
-    <text id="con" x="230" y="320" class="large centred"><tspan>___</tspan></text>
-    <text id="con-bonus" x="260" y="320" class="large"><tspan>___</tspan></text>
-    <text id="int-label" x="80" y="350" class="big"><tspan>Intelligence</tspan></text>
-    <text id="int" x="230" y="350" class="large centred"><tspan>___</tspan></text>
-    <text id="int-bonus" x="260" y="350" class="large"><tspan>___</tspan></text>
-    <text id="wis-label" x="80" y="380" class="big"><tspan>Wisdom</tspan></text>
-    <text id="wis" x="230" y="380" class="large centred"><tspan>___</tspan></text>
-    <text id="wis-bonus" x="260" y="380" class="large"><tspan>___</tspan></text>
-    <text id="cha-label" x="80" y="410" class="big"><tspan>Charisma</tspan></text>
-    <text id="cha" x="230" y="410" class="large centred"><tspan>___</tspan></text>
-    <text id="cha-bonus" x="260" y="410" class="large"><tspan>___</tspan></text>
-
-    <g id="ability-table">
-      <text x="350" y="275" class="tiny centred">
-	<tspan x="350" y="275">Value</tspan>
-	<tspan x="350" dy="12">3</tspan>
-	<tspan x="350" dy="12">4–5</tspan>
-	<tspan x="350" dy="12">6–8</tspan>
-	<tspan x="350" dy="12">9–12</tspan>
-	<tspan x="350" dy="12">13–15</tspan>
-	<tspan x="350" dy="12">16–17</tspan>
-	<tspan x="350" dy="12">18</tspan>
-      </text>
-      <text x="390" y="275" class="tiny centred">
-	<tspan x="390" y="275">Bonus</tspan>
-	<tspan x="390" dy="12">-3</tspan>
-	<tspan x="390" dy="12">-2</tspan>
-	<tspan x="390" dy="12">-1</tspan>
-	<tspan x="390" dy="12">0</tspan>
-	<tspan x="390" dy="12">+1</tspan>
-	<tspan x="390" dy="12">+2</tspan>
-	<tspan x="390" dy="12">+3</tspan>
-      </text>
+  <g
+     id="g128">
+    <text
+       id="name-label"
+       x="80"
+       y="80"
+       class="big"><tspan
+         id="tspan1">Name</tspan></text>
+    <text
+       id="name"
+       x="160"
+       y="80"
+       class="large"><tspan
+         id="tspan2">_________</tspan></text>
+    <text
+       id="class-label"
+       x="80"
+       y="105"
+       class="big"><tspan
+         id="tspan3">Class</tspan></text>
+    <text
+       id="class"
+       x="160"
+       y="105"
+       class="large"><tspan
+         id="tspan4">_________</tspan></text>
+    <text
+       id="level-label"
+       x="80"
+       y="130"
+       class="big"><tspan
+         id="tspan5">Level</tspan></text>
+    <text
+       id="level"
+       x="160"
+       y="130"
+       class="large"><tspan
+         id="tspan6">_________</tspan></text>
+    <text
+       id="xp-label"
+       x="80"
+       y="155"
+       class="big"><tspan
+         id="tspan7">Exp.</tspan></text>
+    <text
+       id="xp"
+       x="160"
+       y="155"
+       class="large"><tspan
+         id="tspan8">_________</tspan></text>
+    <text
+       id="ac-label"
+       x="80"
+       y="180"
+       class="large"><tspan
+         id="tspan9">Armour</tspan></text>
+    <text
+       id="ac"
+       x="160"
+       y="180"
+       class="large"><tspan
+         id="tspan10">_________</tspan></text>
+    <text
+       id="ac-explanation"
+       x="80"
+       y="192"
+       class="tiny"><tspan
+         x="80"
+         y="192"
+         id="tspan11">Summary: none is 9, leather is 7,</tspan><tspan
+         x="80"
+         y="204"
+         id="tspan12">chain is 5, plate is 3, shield is -1,</tspan><tspan
+         x="80"
+         y="216"
+         id="tspan13">and subtract Dexterity Bonus</tspan></text>
+    <text
+       id="ability-label"
+       x="230"
+       y="235"
+       class="norm centred"><tspan
+         id="tspan14">Value</tspan></text>
+    <text
+       id="bonus-label"
+       x="260"
+       y="235"
+       class="norm"><tspan
+         id="tspan15">Bonus</tspan></text>
+    <text
+       id="str-label"
+       x="80"
+       y="260"
+       class="big"><tspan
+         id="tspan16">Strength</tspan></text>
+    <text
+       id="str"
+       x="230"
+       y="260"
+       class="large centred"><tspan
+         id="tspan17">___</tspan></text>
+    <text
+       id="str-bonus"
+       x="260"
+       y="260"
+       class="large"><tspan
+         id="tspan18">___</tspan></text>
+    <text
+       id="dex-label"
+       x="80"
+       y="290"
+       class="big"><tspan
+         id="tspan19">Dexterity</tspan></text>
+    <text
+       id="dex"
+       x="230"
+       y="290"
+       class="large centred"><tspan
+         id="tspan20">___</tspan></text>
+    <text
+       id="dex-bonus"
+       x="260"
+       y="290"
+       class="large"><tspan
+         id="tspan21">___</tspan></text>
+    <text
+       id="con-label"
+       x="80"
+       y="320"
+       class="big"><tspan
+         id="tspan22">Constitution</tspan></text>
+    <text
+       id="con"
+       x="230"
+       y="320"
+       class="large centred"><tspan
+         id="tspan23">___</tspan></text>
+    <text
+       id="con-bonus"
+       x="260"
+       y="320"
+       class="large"><tspan
+         id="tspan24">___</tspan></text>
+    <text
+       id="int-label"
+       x="80"
+       y="350"
+       class="big"><tspan
+         id="tspan25">Intelligence</tspan></text>
+    <text
+       id="int"
+       x="230"
+       y="350"
+       class="large centred"><tspan
+         id="tspan26">___</tspan></text>
+    <text
+       id="int-bonus"
+       x="260"
+       y="350"
+       class="large"><tspan
+         id="tspan27">___</tspan></text>
+    <text
+       id="wis-label"
+       x="80"
+       y="380"
+       class="big"><tspan
+         id="tspan28">Wisdom</tspan></text>
+    <text
+       id="wis"
+       x="230"
+       y="380"
+       class="large centred"><tspan
+         id="tspan29">___</tspan></text>
+    <text
+       id="wis-bonus"
+       x="260"
+       y="380"
+       class="large"><tspan
+         id="tspan30">___</tspan></text>
+    <text
+       id="cha-label"
+       x="80"
+       y="410"
+       class="big"><tspan
+         id="tspan31">Charisma</tspan></text>
+    <text
+       id="cha"
+       x="230"
+       y="410"
+       class="large centred"><tspan
+         id="tspan32">___</tspan></text>
+    <text
+       id="cha-bonus"
+       x="260"
+       y="410"
+       class="large"><tspan
+         id="tspan33">___</tspan></text>
+    <g
+       id="ability-table">
+      <text
+         x="350"
+         y="275"
+         class="tiny centred"
+         id="text41"><tspan
+           x="350"
+           y="275"
+           id="tspan34">Value</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan35">3</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan36">4-5</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan37">6-8</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan38">9-12</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan39">13-15</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan40">16-17</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan41">18</tspan></text>
+      <text
+         x="390"
+         y="275"
+         class="tiny centred"
+         id="text49"><tspan
+           x="390"
+           y="275"
+           id="tspan42">Bonus</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan43">-3</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan44">-2</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan45">-1</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan46">0</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan47">+1</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan48">+2</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan49">+3</tspan></text>
     </g>
-
-    <text id="languages-label" x="450" y="230" class="smaller"><tspan>Languages</tspan></text>
-    <rect id="languages-frame" width="220" height="50" x="450" y="235" class="frame"/>
-    <text id="languages" x="455" y="250" class="tiny"><tspan y="250"/><tspan y="265"/></text>
-
-    <text id="misc-label" x="450" y="315" class="smaller"><tspan>Other</tspan></text>
-    <rect id="misc-frame" width="220" height="220" x="450" y="320" class="frame"/>
-    <text id="misc" x="455" y="335" class="tiny">
-      <tspan x="455" y="335" />
-      <tspan x="455" y="347" />
-    </text>
-
-    <text id="reaction-label" x="80" y="460" class="big"><tspan>Reactions</tspan></text>
-    <text id="reaction" x="260" y="460" class="large centred"><tspan>___</tspan></text>
-
-    <g id="reaction-table">
-      <text x="350" y="405" class="tiny centred">
-	<tspan x="350" y="405">Value</tspan>
-	<tspan x="350" dy="12">3</tspan>
-	<tspan x="350" dy="12">4–8</tspan>
-	<tspan x="350" dy="12">9–12</tspan>
-	<tspan x="350" dy="12">13–17</tspan>
-	<tspan x="350" dy="12">18</tspan>
-      </text>
-      <text x="390" y="405" class="tiny centred">
-	<tspan x="390" y="405">Bonus</tspan>
-	<tspan x="390" dy="12">-2</tspan>
-	<tspan x="390" dy="12">-1</tspan>
-	<tspan x="390" dy="12">0</tspan>
-	<tspan x="390" dy="12">+1</tspan>
-	<tspan x="390" dy="12">+2</tspan>
-      </text>
+    <text
+       id="languages-label"
+       x="450"
+       y="230"
+       class="smaller"><tspan
+         id="tspan50">Languages</tspan></text>
+    <rect
+       id="languages-frame"
+       width="220"
+       height="50"
+       x="450"
+       y="235"
+       class="frame" />
+    <text
+       id="languages"
+       x="455"
+       y="250"
+       class="tiny"><tspan
+         y="250"
+         id="tspan51" /><tspan
+         y="265"
+         id="tspan52" /></text>
+    <text
+       id="misc-label"
+       x="450"
+       y="315"
+       class="smaller"><tspan
+         id="tspan53">Other</tspan></text>
+    <rect
+       id="misc-frame"
+       width="220"
+       height="220"
+       x="450"
+       y="320"
+       class="frame" />
+    <text
+       id="misc"
+       x="455"
+       y="335"
+       class="tiny"><tspan
+         x="455"
+         y="335"
+         id="tspan54" /><tspan
+         x="455"
+         y="347"
+         id="tspan55" /></text>
+    <text
+       id="reaction-label"
+       x="80"
+       y="460"
+       class="big"><tspan
+         id="tspan56">Reactions</tspan></text>
+    <text
+       id="reaction"
+       x="260"
+       y="460"
+       class="large centred"><tspan
+         id="tspan57">___</tspan></text>
+    <g
+       id="reaction-table">
+      <text
+         x="350"
+         y="405"
+         class="tiny centred"
+         id="text63"><tspan
+           x="350"
+           y="405"
+           id="tspan58">Value</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan59">3</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan60">4-8</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan61">9-12</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan62">13-17</tspan><tspan
+           x="350"
+           dy="12"
+           id="tspan63">18</tspan></text>
+      <text
+         x="390"
+         y="405"
+         class="tiny centred"
+         id="text69"><tspan
+           x="390"
+           y="405"
+           id="tspan64">Bonus</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan65">-2</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan66">-1</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan67">0</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan68">+1</tspan><tspan
+           x="390"
+           dy="12"
+           id="tspan69">+2</tspan></text>
     </g>
-
-    <text id="hirelings-label" x="80" y="490" class="big"><tspan>Retainers</tspan></text>
-    <text id="hirelings" x="260" y="490" class="large centred"><tspan>___</tspan></text>
-    <text id="hirelings-explanation" x="370" y="490" class="tiny centred"><tspan>4 + Charisma Bonus</tspan></text>
-
-    <text id="loyalty-label" x="80" y="520" class="big"><tspan>Loyalty</tspan></text>
-    <text id="loyalty" x="260" y="520" class="large centred"><tspan>___</tspan></text>
-    <text id="loyalty-explanation" x="370" y="520" class="tiny centred"><tspan>7 + Charisma Bonus</tspan></text>
-
-    <text id="saves-label" x="80" y="570" class="huge"><tspan>Saving Throws</tspan></text>
-    <text id="saves-bonus" x="380" y="570" class="big centred"><tspan>Bonus</tspan></text>
-    <text id="breath-label" x="80" y="600" class="big"><tspan>Dragon Breath, Explosion</tspan></text>
-    <text id="breath-bonus" x="380" y="600" class="large centred"><tspan>___</tspan></text>
-    <text id="petrify-label" x="80" y="630" class="big"><tspan></tspan>Paralysis, Petrification</text>
-    <text id="petrify-bonus" x="380" y="630" class="large centred"><tspan>___</tspan></text>
-    <text id="poison-label" x="80" y="660" class="big"><tspan></tspan>Death, Poison</text>
-    <text id="poison-bonus" x="380" y="660" class="large centred"><tspan>___</tspan></text>
-    <text id="wands-label" x="80" y="690" class="big"><tspan></tspan>Rays, Wands</text>
-    <text id="wands-bonus" x="380" y="690" class="large centred"><tspan>___</tspan></text>
-    <text id="spells-label" x="80" y="720" class="big"><tspan></tspan>Spells</text>
-    <text id="spells-bonus" x="380" y="720" class="large centred"><tspan>___</tspan></text>
-    <text id="saves-explanation" x="390" y="740" class="tiny right"><tspan>d20 + bonus ≥ 20</tspan></text>
-
-    <text id="portrait-label" x="300" y="80" class="smaller"><tspan>Heraldry or Image</tspan></text>
-    <image id="portrait" width="120" height="120" x="300" y="85" />
-    <rect id="portrait-frame" width="120" height="120" x="300" y="85" class="frame"/>
-
-    <text id="hp-label" x="450" y="80" class="smaller"><tspan>Hit points</tspan></text>
-    <rect id="hp-frame" width="220" height="50" x="450" y="85" class="frame"/>
-    <text id="hp" x="455" y="115" class="huge"><tspan>___</tspan></text>
-    <text id="hp-explanation" x="455" y="130" class="tiny"><tspan>Max</tspan></text>
-    <text id="hp-classes" y="83" class="tiny right">
-      <tspan x="668" dy="12">fighters &amp; dwarves: W8</tspan><!--
-      --><tspan x="668" dy="12">magic users &amp; thieves: W4</tspan><!--
-      --><tspan x="668" dy="12">all others: W6</tspan><!--
-      --><tspan x="668" dy="12">+ constitution bonus</tspan>
-    </text>
-
-    <text id="gold-label" x="450" y="160" class="smaller"><tspan>Gold</tspan></text>
-    <rect id="gold-frame" width="60" height="40" x="450" y="165" class="frame"/>
-    <text id="gold" x="455" y="185" class="large"><tspan y="185"/><tspan y="200"/></text>
-    <text id="gems-label" x="530" y="160" class="smaller"><tspan>Gems</tspan></text>
-    <rect id="gems-frame" width="60" height="40" x="530" y="165" class="frame"/>
-    <text id="gems" x="535" y="185" class="large"><tspan y="185"/><tspan y="200"/></text>
-    <text id="jewelry-label" x="610" y="160" class="smaller"><tspan>Jewelry</tspan></text>
-    <rect id="jewelry-frame" width="60" height="40" x="610" y="165" class="frame"/>
-    <text id="jewelry" x="615" y="185" class="large"><tspan y="185"/><tspan y="200"/></text>
-
-    <text id="property-label" x="700" y="80" class="smaller"><tspan>Inventory</tspan></text>
-    <rect id="property-frame" width="320" height="200" x="700" y="85" class="frame"/>
-    <text id="property" x="705" y="100" class="tiny"><tspan y="100"/><tspan y="115"/></text>
-
-    <text id="abilities-label" x="700" y="315" class="smaller"><tspan>Abilities, Spells</tspan></text>
-    <rect id="abilities-frame" width="320" height="220" x="700" y="320" class="frame"/>
-    <text id="abilities" x="705" y="335" class="tiny">
-      <tspan x="705" y="335" />
-      <tspan x="705" y="347" />
-    </text>
-
-    <text id="attack-label" x="620" y="600" class="big centred"><tspan>Bonus</tspan></text>
-    <text id="damage-label" x="750" y="600" class="big centred"><tspan>Damage</tspan></text>
-    <text id="melee" x="450" y="640" class="big"><tspan>Melee</tspan></text>
-    <text id="melee-to-hit" x="620" y="640" class="big centred"><tspan>+0</tspan></text>
-    <text id="melee-damage" x="750" y="640" class="huge centred"><tspan>1d6</tspan></text>
-    <text id="melee-note" x="820" y="640" class="big"><tspan></tspan></text>
-    <text id="range" x="450" y="680" class="big"><tspan>Ranged</tspan></text>
-    <text id="range-to-hit" x="620" y="680" class="big centred"><tspan>+0</tspan></text>
-    <text id="range-damage" x="750" y="680" class="huge centred"><tspan>1d6</tspan></text>
-    <text id="range-note" x="820" y="680" class="big"><tspan></tspan></text>
-    <text id="other" x="450" y="720" class="big"><tspan>Other</tspan></text>
-    <text id="other-to-hit" x="620" y="720" class="big centred"><tspan>+0</tspan></text>
-    <text id="other-damage" x="750" y="720" class="huge centred"><tspan>1d6</tspan></text>
-    <text id="other-note" x="820" y="720" class="big"><tspan></tspan></text>
-
-    <text id="attack-explanation" x="450" y="740" class="tiny">
-      <tspan>melee: add strength bonus to both; ranged: add dexterity bonus to hit</tspan>
-      <tspan x="450" dy="12">to hit: roll d20 + bonus + armour class ≥ 20</tspan>
-    </text>
-
-    <a id="link" xlink:href="https://campaignwiki.org/character-sheet-generator">
-      <text id="link-text" y="740" x="990"><tspan>Link</tspan></text>
+    <text
+       id="hirelings-label"
+       x="80"
+       y="490"
+       class="big"><tspan
+         id="tspan70">Retainers</tspan></text>
+    <text
+       id="hirelings"
+       x="260"
+       y="490"
+       class="large centred"><tspan
+         id="tspan71">___</tspan></text>
+    <text
+       id="hirelings-explanation"
+       x="370"
+       y="490"
+       class="tiny centred"><tspan
+         id="tspan72">4 + Charisma Bonus</tspan></text>
+    <text
+       id="loyalty-label"
+       x="80"
+       y="520"
+       class="big"><tspan
+         id="tspan73">Loyalty</tspan></text>
+    <text
+       id="loyalty"
+       x="260"
+       y="520"
+       class="large centred"><tspan
+         id="tspan74">___</tspan></text>
+    <text
+       id="loyalty-explanation"
+       x="370"
+       y="520"
+       class="tiny centred"><tspan
+         id="tspan75">7 + Charisma Bonus</tspan></text>
+    <text
+       id="saves-label"
+       x="80"
+       y="570"
+       class="huge"><tspan
+         id="tspan76">Saving Throws</tspan></text>
+    <text
+       id="saves-bonus"
+       x="380"
+       y="570"
+       class="big centred"><tspan
+         id="tspan77">Bonus</tspan></text>
+    <text
+       id="breath-label"
+       x="80"
+       y="600"
+       class="big"
+       style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"><tspan
+         id="tspan78"
+         style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Dragon Breath, Explosion</tspan></text>
+    <text
+       id="breath-bonus"
+       x="380"
+       y="600"
+       class="large centred"><tspan
+         id="tspan79">___</tspan></text>
+    <text
+       id="petrify-label"
+       x="80"
+       y="630"
+       class="big"
+       style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"><tspan
+   id="tspan80"
+   style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal" />Paralysis, Petrification</text>
+    <text
+       id="petrify-bonus"
+       x="380"
+       y="630"
+       class="large centred"><tspan
+         id="tspan81">___</tspan></text>
+    <text
+       id="poison-label"
+       x="80"
+       y="660"
+       class="big"
+       style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"><tspan
+   id="tspan82"
+   style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal" />Death, Poison</text>
+    <text
+       id="poison-bonus"
+       x="380"
+       y="660"
+       class="large centred"><tspan
+         id="tspan83">___</tspan></text>
+    <text
+       id="wands-label"
+       x="80"
+       y="690"
+       class="big"
+       style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"><tspan
+   id="tspan84"
+   style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal" />Rays, Wands</text>
+    <text
+       id="wands-bonus"
+       x="380"
+       y="690"
+       class="large centred"><tspan
+         id="tspan85">___</tspan></text>
+    <text
+       id="spells-label"
+       x="80"
+       y="720"
+       class="big"
+       style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"><tspan
+   id="tspan86"
+   style="-inkscape-font-specification:'Purisa, Normal';font-family:Purisa;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:18.66666667px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal" />Spells</text>
+    <text
+       id="spells-bonus"
+       x="380"
+       y="720"
+       class="large centred"><tspan
+         id="tspan87">___</tspan></text>
+    <text
+       id="saves-explanation"
+       x="390"
+       y="740"
+       class="tiny right"><tspan
+         id="tspan88">d20 + bonus ≥ 20</tspan></text>
+    <text
+       id="portrait-label"
+       x="300"
+       y="80"
+       class="smaller"><tspan
+         id="tspan89">Heraldry or Image</tspan></text>
+    <image
+       id="portrait"
+       width="120"
+       height="120"
+       x="300"
+       y="85" />
+    <rect
+       id="portrait-frame"
+       width="120"
+       height="120"
+       x="300"
+       y="85"
+       class="frame" />
+    <text
+       id="hp-label"
+       x="450"
+       y="80"
+       class="smaller"><tspan
+         id="tspan90">Hit points</tspan></text>
+    <rect
+       id="hp-frame"
+       width="220"
+       height="50"
+       x="450"
+       y="85"
+       class="frame" />
+    <text
+       id="hp"
+       x="455"
+       y="115"
+       class="huge"><tspan
+         id="tspan91">___</tspan></text>
+    <text
+       id="hp-explanation"
+       x="455"
+       y="130"
+       class="tiny"><tspan
+         id="tspan92">Max</tspan></text>
+    <text
+       id="hp-classes"
+       y="83"
+       class="tiny right"><tspan
+         x="668"
+         dy="12"
+         id="tspan93">fighters &amp; dwarves: W8</tspan><!--
+      --><tspan
+         x="668"
+         dy="12"
+         id="tspan94">magic users &amp; thieves: W4</tspan><!--
+      --><tspan
+         x="668"
+         dy="12"
+         id="tspan95">all others: W6</tspan><!--
+      --><tspan
+         x="668"
+         dy="12"
+         id="tspan96">+ constitution bonus</tspan></text>
+    <text
+       id="gold-label"
+       x="450"
+       y="160"
+       class="smaller"><tspan
+         id="tspan97">Gold</tspan></text>
+    <rect
+       id="gold-frame"
+       width="60"
+       height="40"
+       x="450"
+       y="165"
+       class="frame" />
+    <text
+       id="gold"
+       x="455"
+       y="185"
+       class="large"><tspan
+         y="185"
+         id="tspan98" /><tspan
+         y="200"
+         id="tspan99" /></text>
+    <text
+       id="gems-label"
+       x="530"
+       y="160"
+       class="smaller"><tspan
+         id="tspan100">Gems</tspan></text>
+    <rect
+       id="gems-frame"
+       width="60"
+       height="40"
+       x="530"
+       y="165"
+       class="frame" />
+    <text
+       id="gems"
+       x="535"
+       y="185"
+       class="large"><tspan
+         y="185"
+         id="tspan101" /><tspan
+         y="200"
+         id="tspan102" /></text>
+    <text
+       id="jewelry-label"
+       x="610"
+       y="160"
+       class="smaller"><tspan
+         id="tspan103">Jewelry</tspan></text>
+    <rect
+       id="jewelry-frame"
+       width="60"
+       height="40"
+       x="610"
+       y="165"
+       class="frame" />
+    <text
+       id="jewelry"
+       x="615"
+       y="185"
+       class="large"><tspan
+         y="185"
+         id="tspan104" /><tspan
+         y="200"
+         id="tspan105" /></text>
+    <text
+       id="property-label"
+       x="700"
+       y="80"
+       class="smaller"><tspan
+         id="tspan106">Inventory</tspan></text>
+    <rect
+       id="property-frame"
+       width="320"
+       height="200"
+       x="700"
+       y="85"
+       class="frame" />
+    <text
+       id="property"
+       x="705"
+       y="100"
+       class="tiny"><tspan
+         y="100"
+         id="tspan107" /><tspan
+         y="115"
+         id="tspan108" /></text>
+    <text
+       id="abilities-label"
+       x="700"
+       y="315"
+       class="smaller"><tspan
+         id="tspan109">Abilities, Spells</tspan></text>
+    <rect
+       id="abilities-frame"
+       width="320"
+       height="220"
+       x="700"
+       y="320"
+       class="frame" />
+    <text
+       id="abilities"
+       x="705"
+       y="335"
+       class="tiny"><tspan
+         x="705"
+         y="335"
+         id="tspan110" /><tspan
+         x="705"
+         y="347"
+         id="tspan111" /></text>
+    <text
+       id="attack-label"
+       x="620"
+       y="600"
+       class="big centred"><tspan
+         id="tspan112">Bonus</tspan></text>
+    <text
+       id="damage-label"
+       x="750"
+       y="600"
+       class="big centred"><tspan
+         id="tspan113">Damage</tspan></text>
+    <text
+       id="melee"
+       x="450"
+       y="640"
+       class="big"><tspan
+         id="tspan114">Melee</tspan></text>
+    <text
+       id="melee-to-hit"
+       x="620"
+       y="640"
+       class="big centred"><tspan
+         id="tspan115">+0</tspan></text>
+    <text
+       id="melee-damage"
+       x="750"
+       y="640"
+       class="huge centred"><tspan
+         id="tspan116">1d6</tspan></text>
+    <text
+       id="melee-note"
+       x="820"
+       y="640"
+       class="big"><tspan
+         id="tspan117" /></text>
+    <text
+       id="range"
+       x="450"
+       y="680"
+       class="big"><tspan
+         id="tspan118">Ranged</tspan></text>
+    <text
+       id="range-to-hit"
+       x="620"
+       y="680"
+       class="big centred"><tspan
+         id="tspan119">+0</tspan></text>
+    <text
+       id="range-damage"
+       x="750"
+       y="680"
+       class="huge centred"><tspan
+         id="tspan120">1d6</tspan></text>
+    <text
+       id="range-note"
+       x="820"
+       y="680"
+       class="big"><tspan
+         id="tspan121" /></text>
+    <text
+       id="other"
+       x="450"
+       y="720"
+       class="big"><tspan
+         id="tspan122">Other</tspan></text>
+    <text
+       id="other-to-hit"
+       x="620"
+       y="720"
+       class="big centred"><tspan
+         id="tspan123">+0</tspan></text>
+    <text
+       id="other-damage"
+       x="750"
+       y="720"
+       class="huge centred"><tspan
+         id="tspan124">1d6</tspan></text>
+    <text
+       id="other-note"
+       x="820"
+       y="720"
+       class="big"><tspan
+         id="tspan125" /></text>
+    <text
+       id="attack-explanation"
+       x="450"
+       y="740"
+       class="tiny"><tspan
+         id="tspan126">melee: add strength bonus to both; ranged: add dexterity bonus to hit</tspan><tspan
+         x="450"
+         dy="12"
+         id="tspan127">to hit: roll d20 + bonus + armour class ≥ 20</tspan></text>
+    <a
+       id="link"
+       xlink:href="https://campaignwiki.org/character-sheet-generator">
+      <text
+         id="link-text"
+         y="740"
+         x="990"><tspan
+           id="tspan128">Link</tspan></text>
     </a>
   </g>
 </svg>
