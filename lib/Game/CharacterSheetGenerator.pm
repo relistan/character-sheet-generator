@@ -572,10 +572,10 @@ sub character {
   }
 
   if (not defined $char->{damage}) {
-    $char->{damage} = 1 . T('d6');
+    $char->{damage} = "+0";
   }
   if (not defined $char->{"melee-damage"}) {
-    $char->{"melee-damage"} = $char->{damage} . $char->{"str-bonus"};
+    $char->{"melee-damage"} = $char->{"str-bonus"} || "+0";
   }
   if (not defined $char->{"range-damage"}) {
     $char->{"range-damage"} = $char->{damage};
@@ -600,6 +600,7 @@ sub starting_gold {
 }
 
 my %price_cache;
+my %damage_cache;
 
 sub equipment {
   my $char = shift;
@@ -609,8 +610,10 @@ sub equipment {
   return if $xp or $level > 1 or not $class;
 
   get_price_cache($char);
+  get_damage_cache($char);
   my $money = starting_gold($class);
   my @property;
+  my @weapons;
 
   # free spellbook for arcane casters
   if (member($class, T('magic-user'), T('elf'))) {
@@ -619,7 +622,7 @@ sub equipment {
 
   ($money, @property) = buy_basics($char, $money, $class, @property);
   ($money, @property) = buy_armor($char, $money, $class, @property);
-  ($money, @property) = buy_weapon($char, $money, $class, @property);
+  ($money, @weapons) = buy_weapon($char, $money, $class, @weapons);
   ($money, @property) = buy_tools($char, $money, $class, @property);
   ($money, @property) = buy_light($char, $money, $class, @property);
   ($money, @property) = buy_gear($char, $money, $class, @property);
@@ -629,6 +632,48 @@ sub equipment {
   push(@property, T('%0 gold', $gold)) if $gold;
   push(@property, T('%0 silver', $silver)) if $silver;
   provide($char, "property",  join("\\\\", @property));
+  @weapons = map { damage_for_weapon($_) } @weapons;
+  provide($char, "weapons", join("\\\\", @weapons));
+}
+
+sub get_damage_cache {
+  # We need to used the translations because the weapons are translated
+  %damage_cache = (
+    T('dagger') => '1d4',
+    T('silver dagger') => '1d4',
+    T('short sword') => '1d6',
+    T('long sword') => '1d8',
+    T('mace') => '1d6',
+    T('war hammer') => '1d6',
+    T('short bow') => '1d6',
+    T('long bow') => '1d6',
+    T('crossbow') => '1d6',
+    T('sling') => '1d4',
+    T('spear') => '1d6',
+    T('hand axe') => '1d6',
+    T('club') => '1d4',
+    T('staff') => '1d4',
+    T('two handed sword') => '1d10',
+    T('battle axe') => '1d8',
+    T('pole arm') => '1d10',
+  );
+}
+
+sub damage_for_weapon {
+  my $weapon = shift;
+  my $key = $weapon;
+
+  # remove the count suffix e.g. "(2)"
+  $key =~ s/ \(\d+\)$//;
+
+  if (exists($damage_cache{$key})) {
+    if ($key eq T('two handed sword')) {
+      return "$weapon \n  – $damage_cache{$key} + $damage_cache{$key}";
+    }
+    return "$weapon – $damage_cache{$key}";
+  }
+
+  return $weapon
 }
 
 # This is computed at runtime because of the translations.
@@ -692,10 +737,10 @@ sub add {
   foreach (@$property) {
     if ($_ eq $item) {
       if (/\(\d+\)$/) {
-	my $n = $1++;
-	s/\(\d+\)$/($n)/;
+	      my $n = $1++;
+	      s/\(\d+\)$/($n)/;
       } else {
-	$_ .= " (2)";
+	      $_ .= " (2)";
       }
       $item = undef;
       last;
@@ -714,26 +759,26 @@ sub buy {
   if (ref $item eq "ARRAY") {
     for my $elem (@$item) {
       if (ref $elem eq "ARRAY") {
-	my $price = 0;
-	for my $thing (@$elem) {
-	  $price += price($char, $thing);
-	}
-	if ($money >= $price) {
-	  $money -= $price;
-	  $elem->[-1] .= " (${price}gp)" if $char->{debug};
-	  foreach (@$elem) {
-	    add($_, \@property);
-	  }
-	  last;
-	}
+	      my $price = 0;
+	      for my $thing (@$elem) {
+	        $price += price($char, $thing);
+	      }
+	      if ($money >= $price) {
+	        $money -= $price;
+	        $elem->[-1] .= " (${price}gp)" if $char->{debug};
+	        foreach (@$elem) {
+	          add($_, \@property);
+	        }
+	        last;
+	      }
       } else {
-	my $price = price($char, $elem);
-	if ($money >= $price) {
-	  $money -= $price;
-	  $elem .= " (${price}gp)" if $char->{debug};
-	  add($elem, \@property);
-	  last;
-	}
+	      my $price = price($char, $elem);
+	      if ($money >= $price) {
+	        $money -= $price;
+	        $elem .= " (${price}gp)" if $char->{debug};
+	        add($elem, \@property);
+	        last;
+	      }
       }
     }
   } else {
@@ -846,11 +891,11 @@ sub buy_melee_weapon {
       T('staff'));
   } elsif ($class eq T('fighter')) {
     if (good($str)
-	and $hp > 6
-	and not $shield) {
+	    and $hp > 6
+	    and not $shield) {
       # prefer a shield!
       push(@preferences,
-	   shuffle(T('two handed sword'),
+	     shuffle(T('two handed sword'),
 		   T('battle axe'),
 		   T('pole arm')));
     }
