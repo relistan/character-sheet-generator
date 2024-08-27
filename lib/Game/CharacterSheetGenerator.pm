@@ -1689,9 +1689,7 @@ sub random {
     if ($class eq T('fighter') or $class eq T('dwarf') or $class eq T('dog')) {
       $hp += max(1, d8() + bonus($con)) for 1.. $level;
       $hp += 2 if $class eq T('dog');
-    } elsif ($class eq T('elf') or $class eq T('halfling')) {
-      $hp += max(1, d6() + bonus($con)) for 1.. $level;
-    } elsif ($class eq T('cleric')) {
+    } elsif ($class eq T('elf') or $class eq T('halfling') or $class eq T('cleric')) {
       $hp += max(1, d6() + bonus($con)) for 1.. $level;
     } else {
       # hirelings with level 0 still get hp
