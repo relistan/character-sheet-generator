@@ -1056,8 +1056,8 @@ sub spellbook {
 sub divine_spells {
   return T('Spells:') . " "
     . one(T('cure light wounds'),
-	  T('detect evil'),
-	  T('detect magic'),
+    T('detect evil'),
+    T('detect magic'),
     T('light'),
     T('protection from evil'),
     T('purify food and drink'),
