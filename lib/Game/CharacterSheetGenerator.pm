@@ -1693,7 +1693,7 @@ sub random {
       $hp += max(1, d6() + bonus($con)) for 1.. $level;
     } elsif ($class eq T('cleric')) {
       $hp += max(1, d6() + bonus($con)) for 1.. $level;
-    }else {
+    } else {
       # hirelings with level 0 still get hp
       $hp += max(1, d4() + bonus($con)) for 1.. max($level, 1);
     }
