@@ -1561,7 +1561,7 @@ sub name {
 sub traits {
   my ($char, $language) = @_;
   local $lang = $language; # make sure T works as intended
-  my $description = $char->{name} . ", ";
+  my $description = "";
   my $d;
   if ($char->{gender} eq "F") {
     $d = d3();
@@ -1706,7 +1706,7 @@ sub random {
     $abilities .= "\\\\" . spellbook();
   }
   # divine spells
-  if ($class eq T('cleric')) {
+  if ($class eq T('cleric') and $level > 1) {
     $abilities .= "\\\\" . divine_spells();
   }
 
@@ -1826,17 +1826,13 @@ sub turn_undead {
   my $level = $char->{level};
 
   my @header = ("1", "2", "2*", "3", "4", "5", "6", "7-9");
-  my $table_end = ($level + 2, 8)[$level + 2 > 8];
+  my $table_end = ($level + 2, 7)[$level + 2 > 7]; # Either end at level or end of the table
 
   my @values = (7, 9, 11);
-  if ($level > 1) {
+  if ($level > 1) { unshift(@values, 'T') }
+  if ($level > 2) {
     unshift(@values, 'T');
-    if ($level > 2) {
-      unshift(@values, 'T');
-      foreach my $i (3..$table_end) {
-        unshift(@values, 'D');
-      }
-    }
+    foreach (3..$table_end) { unshift(@values, 'D') }
   }
 
   my @result = map { " $header[$_]->$values[$_]\n" } 0..$#values;
@@ -2223,8 +2219,8 @@ Charakter:
 @@ characters.html.ep
 <% for my $char (@{$characters}) { %>
 <div class="char">
-<p><%= $char->{traits} %><br/></p>
-<table>
+<p><b><%= $char->{name} %></b> <%= $char->{traits} %><br/></p>
+<table style="border: 1px dotted black;">
 <tr><th>Str</th><th>Dex</th><th>Con</th><th>Int</th><th>Wis</th><th>Cha</th><th>HP</th><th>AC</th><th>Class</th></tr>
 <tr>\
 <td class="num"><%= $char->{str} %></td>\
@@ -2235,7 +2231,7 @@ Charakter:
 <td class="num"><%= $char->{cha} %></td>\
 <td class="num"><%= $char->{hp} %></td>\
 <td class="num"><%= $char->{ac} %></td>\
-<td><%= $char->{class} %></td></tr>
+<td><b><%= $char->{class} %></b></td></tr>
 </table>
 <p><%= join(", ", split(/\\\\/, $char->{property})) %></p>
 </div>

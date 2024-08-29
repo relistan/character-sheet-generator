@@ -228,11 +228,11 @@
 
       <text id="weapons-label" x="710" y="565" class="smaller"> <tspan x="700" y="570">Weapons</tspan> </text>
       <rect id="weapons-frame" width="320" height="136" x="700" y="575" class="frame" />
-      <text id="weapons" x="705" y="590" class="tiny" style="display:inline"> <tspan y="100" /> <tspan y="115" /> </text>
+      <text id="weapons" x="705" y="590" class="tiny"> <tspan y="100" /> <tspan y="115" /> </text>
 
       <text id="abilities-label" x="700" y="315" class="smaller"> <tspan>Abilities, Spells</tspan> </text>
       <rect id="abilities-frame" width="320" height="220" x="700" y="320" class="frame" />
-      <text id="abilities" x="705" y="335" class="tiny"> <tspan x="705" y="335" /> <tspan x="705" y="347" /> </text>
+      <text id="abilities" x="705" y="335" class="tiny"> <tspan y="335" /> <tspan y="347" /> </text>
 
       <text id="attack-label" x="560" y="585" class="big centred"> <tspan>Hit</tspan> </text>
       <text id="damage-label" x="635" y="580" class="big centred"> <tspan>Damage</tspan> </text>
