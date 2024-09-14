@@ -102,6 +102,7 @@ push @{app->commands->namespaces}, "Game::CharacterSheetGenerator::Command";
 # Change scheme if "X-Forwarded-Proto" header is set (presumably to HTTPS)
 app->hook(before_dispatch => sub {
   my $c = shift;
+  $c->req->url->base->path('/character-sheet-generator/');
   $c->req->url->base->scheme("https")
       if $c->req->headers->header("X-Forwarded-Proto") } );
 
