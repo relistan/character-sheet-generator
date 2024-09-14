@@ -2077,12 +2077,15 @@ __DATA__
 @@ index.en.html.ep
 % layout "default.en";
 % title "Character Sheet Generator";
-<h1>Character Sheet Generator</h1>
+<h1>OSR B/X Character Sheet Generator</h1>
 
 <p>
 
-This is the <a href="https://alexschroeder.ch/wiki/Halberds_and_Helmets">Halberds and Helmets</a>
-Character Sheet Generator.
+This is an OSR B/X Character Sheet Generator based on the fantastic <a
+href="https://alexschroeder.ch/wiki/Halberds_and_Helmets">Halberds and
+Helmets</a> Character Sheet Generator by Alex Schroeder. If you like OSR,
+be sure to check out Alex's site.
+
 Reload the character sheet to generate more 1<sup>st</sup> level characters.
 
 Feel free to provide a name for your random character!
