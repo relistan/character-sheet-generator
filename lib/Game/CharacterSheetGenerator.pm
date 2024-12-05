@@ -46,6 +46,8 @@ Here's an example of the stats generated:
     property: silver dagger
     property: sling
     property: pouch with 30 stones
+    weapon: dagger
+    weapon: sling
     abilities: 1/6 for normal tasks
     abilities: 2/6 to hide and sneak
     abilities: 5/6 to hide and sneak outside
@@ -100,6 +102,7 @@ push @{app->commands->namespaces}, "Game::CharacterSheetGenerator::Command";
 # Change scheme if "X-Forwarded-Proto" header is set (presumably to HTTPS)
 app->hook(before_dispatch => sub {
   my $c = shift;
+  $c->req->url->base->path('/character-sheet-generator/');
   $c->req->url->base->scheme("https")
       if $c->req->headers->header("X-Forwarded-Proto") } );
 
@@ -139,6 +142,7 @@ plugin Config => {
 };
 
 my $log = Mojo::Log->new;
+app->log($log);
 $log->level(app->config("loglevel"));
 $log->path(app->config("logfile"));
 $log->debug($log->path ? "Logfile is " . $log->path : "Logging to stderr");
@@ -199,16 +203,22 @@ chain mail
 Kettenhemd
 charm person
 Person bezaubern
+cleric
+Priester
 club
 Keule
 crossbow
 Armbrust
+cure light wounds
+Lichtwunden heilen
 d6
 W6
 dagger
 Dolch
 detect magic
 Magie entdecken
+detect evil
+Böse entdecken
 dwarf
 Zwerg
 elderly man
@@ -229,6 +239,10 @@ hand axe
 Handaxt
 helmet
 Helm
+holy symbol
+Heiliges Symbol
+holy water
+Heiliges Wasser
 dog
 Hund
 hireling
@@ -269,12 +283,18 @@ pouch with 30 stones
 Beutel mit 30 Steinen
 protection from evil
 Schutz vor Bösem
+purify food and drink
+Nahrung und Getränke reinigen
 quiver with 20 arrows
 Köcher mit 20 Pfeilen
 read languages
 Sprachen lesen
 read magic
 Magie lesen
+remove fear
+Angst entfernen
+resist cold
+Kälte ablenken
 rope
 Seil
 shield
@@ -303,6 +323,8 @@ Diebeswerkzeug
 6 Fackeln
 two handed sword
 Zweihänder
+turn undead: (HD->2d6)
+Untote vertreiben: (HD->2d6)
 ventriloquism
 Bauchreden
 war hammer
@@ -572,10 +594,10 @@ sub character {
   }
 
   if (not defined $char->{damage}) {
-    $char->{damage} = 1 . T('d6');
+    $char->{damage} = "+0";
   }
   if (not defined $char->{"melee-damage"}) {
-    $char->{"melee-damage"} = $char->{damage} . $char->{"str-bonus"};
+    $char->{"melee-damage"} = $char->{"str-bonus"} || "+0";
   }
   if (not defined $char->{"range-damage"}) {
     $char->{"range-damage"} = $char->{damage};
@@ -600,6 +622,7 @@ sub starting_gold {
 }
 
 my %price_cache;
+my %damage_cache;
 
 sub equipment {
   my $char = shift;
@@ -609,17 +632,23 @@ sub equipment {
   return if $xp or $level > 1 or not $class;
 
   get_price_cache($char);
+  get_damage_cache($char);
   my $money = starting_gold($class);
   my @property;
+  my @weapons;
 
   # free spellbook for arcane casters
   if (member($class, T('magic-user'), T('elf'))) {
     push(@property, T('spell book'));
   }
 
+  if (member($class, T('cleric'))) {
+    ($money, @property) = buy($char, T('holy symbol'), $money, @property);
+  }
+
   ($money, @property) = buy_basics($char, $money, $class, @property);
   ($money, @property) = buy_armor($char, $money, $class, @property);
-  ($money, @property) = buy_weapon($char, $money, $class, @property);
+  ($money, @weapons) = buy_weapon($char, $money, $class, @weapons);
   ($money, @property) = buy_tools($char, $money, $class, @property);
   ($money, @property) = buy_light($char, $money, $class, @property);
   ($money, @property) = buy_gear($char, $money, $class, @property);
@@ -629,6 +658,48 @@ sub equipment {
   push(@property, T('%0 gold', $gold)) if $gold;
   push(@property, T('%0 silver', $silver)) if $silver;
   provide($char, "property",  join("\\\\", @property));
+  @weapons = map { damage_for_weapon($_) } @weapons;
+  provide($char, "weapons", join("\\\\", @weapons));
+}
+
+sub get_damage_cache {
+  # We need to used the translations because the weapons are translated
+  %damage_cache = (
+    T('dagger') => '1d4',
+    T('silver dagger') => '1d4',
+    T('short sword') => '1d6',
+    T('long sword') => '1d8',
+    T('mace') => '1d6',
+    T('war hammer') => '1d6',
+    T('short bow') => '1d6',
+    T('long bow') => '1d6',
+    T('crossbow') => '1d6',
+    T('sling') => '1d4',
+    T('spear') => '1d6',
+    T('hand axe') => '1d6',
+    T('club') => '1d4',
+    T('staff') => '1d4',
+    T('two handed sword') => '1d10',
+    T('battle axe') => '1d8',
+    T('pole arm') => '1d10',
+  );
+}
+
+sub damage_for_weapon {
+  my $weapon = shift;
+  my $key = $weapon;
+
+  # remove the count suffix e.g. "(2)"
+  $key =~ s/ \(\d+\)$//;
+
+  if (exists($damage_cache{$key})) {
+    if ($key eq T('two handed sword')) {
+      return "$weapon \n  – $damage_cache{$key} + $damage_cache{$key}";
+    }
+    return "$weapon – $damage_cache{$key}";
+  }
+
+  return $weapon
 }
 
 # This is computed at runtime because of the translations.
@@ -648,6 +719,8 @@ sub get_price_cache {
     T('wolfsbane') => 10,
     T('garlic') => 1,
     T('mirror') => 5,
+    T('holy symbol') => 25,
+    T('holy water') => 25,
     T('leather armor') => 20,
     T('chain mail') => 40,
     T('plate mail') => 60,
@@ -673,7 +746,7 @@ sub get_price_cache {
     T('pouch with 30 stones') => 0,
     T('hand axe') => 4,
     T('spear') => 3,
-      );
+  );
 }
 
 sub price {
@@ -692,10 +765,10 @@ sub add {
   foreach (@$property) {
     if ($_ eq $item) {
       if (/\(\d+\)$/) {
-	my $n = $1++;
-	s/\(\d+\)$/($n)/;
+	      my $n = $1++;
+	      s/\(\d+\)$/($n)/;
       } else {
-	$_ .= " (2)";
+	      $_ .= " (2)";
       }
       $item = undef;
       last;
@@ -714,26 +787,26 @@ sub buy {
   if (ref $item eq "ARRAY") {
     for my $elem (@$item) {
       if (ref $elem eq "ARRAY") {
-	my $price = 0;
-	for my $thing (@$elem) {
-	  $price += price($char, $thing);
-	}
-	if ($money >= $price) {
-	  $money -= $price;
-	  $elem->[-1] .= " (${price}gp)" if $char->{debug};
-	  foreach (@$elem) {
-	    add($_, \@property);
-	  }
-	  last;
-	}
+	      my $price = 0;
+	      for my $thing (@$elem) {
+	        $price += price($char, $thing);
+	      }
+	      if ($money >= $price) {
+	        $money -= $price;
+	        $elem->[-1] .= " (${price}gp)" if $char->{debug};
+	        foreach (@$elem) {
+	          add($_, \@property);
+	        }
+	        last;
+	      }
       } else {
-	my $price = price($char, $elem);
-	if ($money >= $price) {
-	  $money -= $price;
-	  $elem .= " (${price}gp)" if $char->{debug};
-	  add($elem, \@property);
-	  last;
-	}
+	      my $price = price($char, $elem);
+	      if ($money >= $price) {
+	        $money -= $price;
+	        $elem .= " (${price}gp)" if $char->{debug};
+	        add($elem, \@property);
+	        last;
+	      }
       }
     }
   } else {
@@ -844,13 +917,18 @@ sub buy_melee_weapon {
     @preferences = shuffle(
       T('dagger'),
       T('staff'));
+  } elsif ($class eq T('cleric')) {
+    @preferences = shuffle(
+      T('mace'),
+      T('war hammer'),
+      T('staff'));
   } elsif ($class eq T('fighter')) {
     if (good($str)
-	and $hp > 6
-	and not $shield) {
+	    and $hp > 6
+	    and not $shield) {
       # prefer a shield!
       push(@preferences,
-	   shuffle(T('two handed sword'),
+	     shuffle(T('two handed sword'),
 		   T('battle axe'),
 		   T('pole arm')));
     }
@@ -931,6 +1009,11 @@ sub buy_ranged_weapon {
 	 [T('sling'),
 	  T('pouch with 30 stones')]);
   }
+  if ($class eq T('cleric')) {
+    push(@preferences,
+	 [T('sling'),
+	  T('pouch with 30 stones')]);
+  }
   return buy($char, \@preferences, $money, @property);
 }
 
@@ -945,10 +1028,11 @@ sub buy_weapon {
   ($budget, @property) = buy_throwing_weapon($char, $budget, $class, @property);
   ($budget, @property) = buy_ranged_weapon($char, $budget, $class, @property);
 
-  ($budget, @property) = buy($char, T('silver dagger'), $budget, @property);
-
-  ($budget, @property) = buy($char, T('dagger'), $budget, @property);
-  ($budget, @property) = buy($char, T('dagger'), $budget, @property);
+  if ($class ne T('cleric')) {
+    ($budget, @property) = buy($char, T('silver dagger'), $budget, @property);
+    ($budget, @property) = buy($char, T('dagger'), $budget, @property);
+    ($budget, @property) = buy($char, T('dagger'), $budget, @property);
+  }
 
   return ($money + $budget, @property);
 }
@@ -970,6 +1054,18 @@ sub spellbook {
 	    T('ventriloquism'));
 }
 
+sub divine_spells {
+  return T('Spells:') . " "
+    . one(T('cure light wounds'),
+    T('detect evil'),
+    T('detect magic'),
+    T('light'),
+    T('protection from evil'),
+    T('purify food and drink'),
+    T('remove fear'),
+    T('resist cold'));
+}
+
 sub saves {
   my $char = shift;
   my $class = $char->{class};
@@ -988,6 +1084,9 @@ sub saves {
   } elsif ($class eq T('magic-user')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       improve([16, 13, 13, 13, 14], 2, int(($level-1)/5));
+  } elsif ($class eq T('cleric')) {
+    ($breath, $poison, $petrify, $wands, $spells) =
+      improve([16, 11, 14, 12, 15], 2, int(($level-1)/4));
   } elsif ($class eq T('thief')) {
     ($breath, $poison, $petrify, $wands, $spells) =
       improve([16, 14, 13, 15, 14], 2, int(($level-1)/4));
@@ -1463,7 +1562,7 @@ sub name {
 sub traits {
   my ($char, $language) = @_;
   local $lang = $language; # make sure T works as intended
-  my $description = $char->{name} . ", ";
+  my $description = "";
   my $d;
   if ($char->{gender} eq "F") {
     $d = d3();
@@ -1560,6 +1659,8 @@ sub random {
       $class = T('magic-user');
     } elsif ($best eq "dex") {
       $class = T('thief');
+    } elsif ($best eq "wis") {
+      $class = T('cleric');
     } else {
       my @candidates = (T('thief'), T('magic-user'), T('fighter'));
       $class = one(@candidates);
@@ -1589,7 +1690,7 @@ sub random {
     if ($class eq T('fighter') or $class eq T('dwarf') or $class eq T('dog')) {
       $hp += max(1, d8() + bonus($con)) for 1.. $level;
       $hp += 2 if $class eq T('dog');
-    } elsif ($class eq T('elf') or $class eq T('halfling')) {
+    } elsif ($class eq T('elf') or $class eq T('halfling') or $class eq T('cleric')) {
       $hp += max(1, d6() + bonus($con)) for 1.. $level;
     } else {
       # hirelings with level 0 still get hp
@@ -1604,6 +1705,10 @@ sub random {
   # spellbook
   if ($class eq T('magic-user') or $class eq T('elf')) {
     $abilities .= "\\\\" . spellbook();
+  }
+  # divine spells
+  if ($class eq T('cleric') and $level > 1) {
+    $abilities .= "\\\\" . divine_spells();
   }
 
   provide($char, "abilities", $abilities);
@@ -1640,6 +1745,8 @@ sub abilities {
     # override the 1/6 for normal tasks
     $abilities = sprintf(T('%d/6 for all activities'), $n);
     $abilities .= "\\\\" . T('+4 to hit and double damage backstabbing');
+  } elsif ($class eq T('cleric')) {
+    $abilities .= "\\\\" . turn_undead($char);
   }
   return $abilities;
 }
@@ -1651,6 +1758,7 @@ sub classes {
 	T('halfling') => "H",
 	T('fighter') => "F",
 	T('magic-user') => "M",
+  T('cleric') => "C",
 	T('thief') => "T",
   };
 }
@@ -1711,6 +1819,26 @@ sub characters {
     push(@characters, \%one);
   }
   return \@characters;
+}
+
+sub turn_undead {
+  my $char = shift;
+  my $class = $char->{class};
+  my $level = $char->{level};
+
+  my @header = ("1", "2", "2*", "3", "4", "5", "6", "7-9");
+  my $table_end = ($level + 2, 7)[$level + 2 > 7]; # Either end at level or end of the table
+
+  my @values = (7, 9, 11);
+  if ($level > 1) { unshift(@values, 'T') }
+  if ($level > 2) {
+    unshift(@values, 'T');
+    foreach (3..$table_end) { unshift(@values, 'D') }
+  }
+
+  my @result = map { " $header[$_]->$values[$_]\n" } 0..$#values;
+
+  return T("turn undead: (HD->2d6)") . join("", @result);
 }
 
 sub stats {
@@ -1949,12 +2077,15 @@ __DATA__
 @@ index.en.html.ep
 % layout "default.en";
 % title "Character Sheet Generator";
-<h1>Character Sheet Generator</h1>
+<h1>OSR B/X Character Sheet Generator</h1>
 
 <p>
 
-This is the <a href="https://alexschroeder.ch/wiki/Halberds_and_Helmets">Halberds and Helmets</a>
-Character Sheet Generator.
+This is an OSR B/X Character Sheet Generator based on the fantastic <a
+href="https://alexschroeder.ch/wiki/Halberds_and_Helmets">Halberds and
+Helmets</a> Character Sheet Generator by Alex Schroeder. If you like OSR,
+be sure to check out Alex's site.
+
 Reload the character sheet to generate more 1<sup>st</sup> level characters.
 
 Feel free to provide a name for your random character!
@@ -1963,7 +2094,7 @@ Feel free to provide a name for your random character!
 %= label_for name => "Name:"
 %= text_field "name"
 %= label_for class => "Class:"
-%= select_field class => ['', qw(fighter magic-user thief elf halfling dwarf hireling porter dog)]
+%= select_field class => ['', qw(fighter magic-user thief elf halfling dwarf cleric hireling porter dog)]
 %= submit_button
 % end
 
@@ -1994,7 +2125,7 @@ Wer will, kann dem generierten Charakter hier auch einen Namen geben:
 %= label_for name => "Name:"
 %= text_field "name"
 %= label_for class => "Klasse:"
-%= select_field class => ['', qw(Krieger Magier Dieb Elf Halbling Zwerg Mietling Träger)]
+%= select_field class => ['', qw(Krieger Magier Dieb Elf Halbling Priester Zwerg Mietling Träger)]
 %= submit_button
 % end
 
@@ -2092,8 +2223,8 @@ Charakter:
 @@ characters.html.ep
 <% for my $char (@{$characters}) { %>
 <div class="char">
-<p><%= $char->{traits} %><br/></p>
-<table>
+<p><b><%= $char->{name} %></b> <%= $char->{traits} %><br/></p>
+<table style="border: 1px dotted black;">
 <tr><th>Str</th><th>Dex</th><th>Con</th><th>Int</th><th>Wis</th><th>Cha</th><th>HP</th><th>AC</th><th>Class</th></tr>
 <tr>\
 <td class="num"><%= $char->{str} %></td>\
@@ -2104,7 +2235,7 @@ Charakter:
 <td class="num"><%= $char->{cha} %></td>\
 <td class="num"><%= $char->{hp} %></td>\
 <td class="num"><%= $char->{ac} %></td>\
-<td><%= $char->{class} %></td></tr>
+<td><b><%= $char->{class} %></b></td></tr>
 </table>
 <p><%= join(", ", split(/\\\\/, $char->{property})) %></p>
 </div>
