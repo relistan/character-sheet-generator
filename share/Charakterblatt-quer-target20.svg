@@ -223,6 +223,10 @@
     <rect id="property-frame" width="320" height="200" x="700" y="85" class="frame"/>
     <text id="property" x="705" y="100" class="tiny"><tspan y="100"/><tspan y="115"/></text>
 
+    <text id="weapons-label" x="710" y="565" class="smaller"> <tspan x="700" y="570">Waffen</tspan> </text>
+    <rect id="weapons-frame" width="320" height="136" x="700" y="575" class="frame" />
+    <text id="weapons" x="705" y="590" class="tiny" style="display:inline"> <tspan y="100" /> <tspan y="115" /> </text>
+
     <text id="abilities-label" x="700" y="315" class="smaller"><tspan>Fähigkeiten, Sprüche</tspan></text>
     <rect id="abilities-frame" width="320" height="220" x="700" y="320" class="frame"/>
     <text id="abilities" x="705" y="335" class="tiny">
@@ -230,29 +234,29 @@
       <tspan x="705" y="347" />
     </text>
 
-    <text id="attack-label" x="620" y="600" class="big centred"><tspan>Bonus</tspan></text>
-    <text id="damage-label" x="750" y="600" class="big centred"><tspan>Schaden</tspan></text>
-    <text id="melee" x="450" y="640" class="big"><tspan>Nahkampf</tspan></text>
-    <text id="melee-to-hit" x="620" y="640" class="big centred"><tspan>+0</tspan></text>
-    <text id="melee-damage" x="750" y="640" class="huge centred"><tspan>1W6</tspan></text>
-    <text id="melee-note" x="820" y="640" class="big"><tspan></tspan></text>
-    <text id="range" x="450" y="680" class="big"><tspan>Fernkampf</tspan></text>
-    <text id="range-to-hit" x="620" y="680" class="big centred"><tspan>+0</tspan></text>
-    <text id="range-damage" x="750" y="680" class="huge centred"><tspan>1W6</tspan></text>
-    <text id="range-note" x="820" y="680" class="big"><tspan></tspan></text>
-    <text id="other" x="450" y="720" class="big"><tspan>Weitere</tspan></text>
-    <text id="other-to-hit" x="620" y="720" class="big centred"><tspan>+0</tspan></text>
-    <text id="other-damage" x="750" y="720" class="huge centred"><tspan>1W6</tspan></text>
+    <text id="attack-label" class="smaller centred" transform="translate(595, 580) rotate(0)"><tspan>Treffen</tspan></text>
+    <text id="damage-label" class="smaller centred" transform="translate(655, 580) rotate(0)"><tspan>Schaden</tspan></text>
+    <text id="melee" x="448" y="610" class="big"><tspan>Nahkampf</tspan></text>
+    <text id="melee-to-hit" x="590" y="610" class="big centred"><tspan>+0</tspan></text>
+    <text id="melee-damage" x="660" y="610" class="big centred"><tspan>+0</tspan></text>
+    <text id="melee-note" x="820" y="610" class="big"><tspan></tspan></text>
+    <text id="range" x="450" y="640" class="big"><tspan>Fernkampf</tspan></text>
+    <text id="range-to-hit" x="590" y="640" class="big centred"><tspan>+0</tspan></text>
+    <text id="range-damage" x="660" y="640" class="big centred"><tspan>+0</tspan></text>
+    <text id="range-note" x="820" y="640" class="big"><tspan></tspan></text>
+    <text id="other" x="450" y="670" class="big"><tspan>Weitere</tspan></text>
+    <text id="other-to-hit" x="590" y="670" class="big centred"><tspan>+0</tspan></text>
+    <text id="other-damage" x="660" y="670" class="big centred"><tspan>+0</tspan></text>
     <text id="other-note" x="820" y="720" class="big"><tspan></tspan></text>
 
-    <text id="attack-explanation" x="580" y="740" class="tiny"><tspan></tspan></text>
-    <text id="attack-explanation" x="450" y="740" class="tiny">
-      <tspan>Nahkampf: Kraft Bonus gilt für beides; Fernkampf: Geschick Bonus gilt nur zum treffen</tspan>
-      <tspan x="450" dy="12">Treffen: W20 + Bonus + RK des Gegners ≥ 20</tspan>
+    <text id="attack-explanation" class="tiny">
+       <tspan x="450" y="715">Nahkampf: Kraft Bonus gilt für beides; </tspan>
+       <tspan x="450" y="730">Fernkampf: Geschick Bonus gilt nur zum treffen</tspan>
+       <tspan x="450" y="745">Treffen: W20 + Bonus + RK des Gegners ≥ 20</tspan>
     </text>
 
     <a id="link" xlink:href="https://campaignwiki.org/character-sheet-generator">
-      <text id="link-text" y="0" x="0" transform="translate(1020,752) rotate(-90) "><tspan>Link</tspan></text>
+      <text id="link-text" y="740" x="990"><tspan>Link</tspan></text>
     </a>
   </g>
 </svg>
